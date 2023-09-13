@@ -52,12 +52,12 @@ function App() {
   return (
     <div className="p-10">
       <NavBar />
-      <div className="w-full h-full flex flex-col items-center justify-center sm400:p-10 sm300:p-10 sm600:p-10 p-16">
+      <div className="w-full h-full flex flex-col items-center justify-center sm400:p-10 sm300:p-8 sm600:p-10 p-16">
         {/* Display the first image as a header */}
         {headerImage && (
           <img
             src={headerImage.download_url}
-            className="w-[60%]  sm600:w-[90%] sm400:w-[100%] lg1100:w-[60%] h-[10%] -mt-10 mb-8 rounded-lg shadow-md"
+            className="w-[60%]  sm600:w-[100%] sm400:w-[100%] sm300:w-[100%] lg1100:w-[60%] h-[10%] -mt-10 mb-8 rounded-lg shadow-md"
             alt=""
           />
         )}
