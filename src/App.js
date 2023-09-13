@@ -7,7 +7,7 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [imagesPerPage] = useState(9);
+  const [imagesPerPage] = useState(10);
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -34,9 +34,11 @@ function App() {
   const indexOfLastImage = currentPage * imagesPerPage;
   const indexOfFirstImage = indexOfLastImage - imagesPerPage;
 
-  const headerImage = images.length > 0 ? images[0] : null;
-
-  const gridImages = images.slice(1).slice(indexOfFirstImage, indexOfLastImage);
+  // Create a new array excluding the first image (images[0])
+  const currentImages = [...images.slice(1)].slice(
+    indexOfFirstImage,
+    indexOfLastImage
+  );
 
   const totalImages = images.length;
   const totalPages = Math.ceil(totalImages / imagesPerPage);
@@ -50,17 +52,18 @@ function App() {
   return (
     <div className="p-10">
       <NavBar />
-      <div className="w-full h-full flex flex-col items-center justify-center sm400:p-10 sm300:p-8 sm600:p-10 p-16">
-        {headerImage && (
+      <div className="w-full h-full flex flex-col items-center justify-center sm400:p-10 sm300:p-7 sm600:p-10 p-16">
+        {/* Display the header image */}
+        {currentImages.length > 0 && (
           <img
-            src={headerImage.download_url}
-            className="w-[60%]  sm600:w-[100%] sm400:w-[100%] sm300:w-[100%] lg1100:w-[60%] h-[10%] -mt-10 mb-8 rounded-lg shadow-md"
+            src={currentImages[0].download_url}
+            className="w-[80%] sm600:w-[90%] sm400:w-[100%] sm300:w-[100%] lg1100:w-[60%] h-[10%] -mt-10 mb-8 rounded-lg shadow-md"
             alt=""
           />
         )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {gridImages.map((image, index) => (
+          {currentImages.map((image, index) => (
             <div
               key={image.id}
               className="bg-white rounded-lg overflow-hidden shadow-md"
