@@ -34,10 +34,8 @@ function App() {
   const indexOfLastImage = currentPage * imagesPerPage;
   const indexOfFirstImage = indexOfLastImage - imagesPerPage;
 
-  // Extract the first image (images[0]) as the header image
   const headerImage = images.length > 0 ? images[0] : null;
 
-  // Create a new array excluding the first image (images[0])
   const gridImages = images.slice(1).slice(indexOfFirstImage, indexOfLastImage);
 
   const totalImages = images.length;
@@ -53,7 +51,6 @@ function App() {
     <div className="p-10">
       <NavBar />
       <div className="w-full h-full flex flex-col items-center justify-center sm400:p-10 sm300:p-8 sm600:p-10 p-16">
-        {/* Display the first image as a header */}
         {headerImage && (
           <img
             src={headerImage.download_url}
