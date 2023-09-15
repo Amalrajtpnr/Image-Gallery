@@ -34,7 +34,6 @@ function App() {
   const indexOfLastImage = currentPage * imagesPerPage;
   const indexOfFirstImage = indexOfLastImage - imagesPerPage;
 
-  // Create a new array excluding the first image (images[0])
   const currentImages = [...images.slice(1)].slice(
     indexOfFirstImage,
     indexOfLastImage
@@ -53,7 +52,6 @@ function App() {
     <div className="p-10">
       <NavBar />
       <div className="w-full h-full flex flex-col items-center justify-center sm400:p-10 sm300:p-7 sm600:p-10 p-16">
-        {/* Display the header image */}
         {currentImages.length > 0 && (
           <img
             src={currentImages[0].download_url}
